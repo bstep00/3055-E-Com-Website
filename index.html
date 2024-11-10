@@ -785,23 +785,22 @@ function searchProducts(searchTerm) {
             `;
         }
 
-        function generateProductCard(product) {
-            return `
-                
-												<div class="product-card">
-													<img src="https://placehold.co/300x200?text=${encodeURIComponent(product.name)}" 
-                         alt="${product.name}" 
-                         class="product-image">
-														<div class="product-info">
-															<h3 class="product-title">${product.name}</h3>
-															<p class="product-price">$${product.price.toFixed(2)}</p>
-															<p class="product-description">${product.description}</p>
-															<button onclick="addToCart('${product.id}')" class="btn btn-primary">Add to Cart</button>
-															<button onclick="addToWishlist('${product.id}')" class="btn btn-secondary">Add to Wishlist</button>
-														</div>
-													</div>
-            `;
-        }
+	function generateProductCard(product) {
+	    return `
+	        <div class="product-card">
+	            <img src="${product.image}" 
+	                 alt="${product.name}" 
+	                 class="product-image">
+	            <div class="product-info">
+	                <h3 class="product-title">${product.name}</h3>
+	                <p class="product-price">$${product.price.toFixed(2)}</p>
+	                <p class="product-description">${product.description}</p>
+	                <button onclick="addToCart('${product.id}')" class="btn btn-primary">Add to Cart</button>
+	                <button onclick="addToWishlist('${product.id}')" class="btn btn-secondary">Add to Wishlist</button>
+	            </div>
+	        </div>
+	    `;
+	}
 
         // Cart Functions
         function addToCart(productId) {
