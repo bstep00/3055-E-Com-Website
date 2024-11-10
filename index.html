@@ -740,7 +740,7 @@ function searchProducts(searchTerm) {
                     ${cart.map(item => `
                         
 										<div class="cart-item">
-											<img src="https://placehold.co/80x80?text=${encodeURIComponent(item.name)}" alt="${item.name}">
+											<img src="${product.image}" alt="${item.name}">
 												<div>
 													<h3>${item.name}</h3>
 													<p>$${item.price.toFixed(2)}</p>
@@ -780,7 +780,7 @@ function searchProducts(searchTerm) {
                     ${wishlist.map(item => `
                         
 												<div class="wishlist-item">
-													<img src="https://placehold.co/80x80?text=${encodeURIComponent(item.name)}" alt="${item.name}">
+													<img src="${product.image}}" alt="${item.name}">
 														<div>
 															<h3>${item.name}</h3>
 															<p>$${item.price.toFixed(2)}</p>
