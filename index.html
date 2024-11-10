@@ -25,7 +25,6 @@
             background-color: var(--background-light);
         }
 
-        /* Header Styles */
         .header {
             background-color: white;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -107,7 +106,6 @@
             color: var(--primary-red);
         }
 
-        /* Navigation */
         .nav {
             display: flex;
             justify-content: center;
@@ -130,14 +128,12 @@
             color: white;
         }
 
-        /* Main Content */
         .main-content {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
 
-        /* Hero Section */
         .hero-section {
             background-color: var(--primary-red);
             color: white;
@@ -157,7 +153,6 @@
             opacity: 0.9;
         }
 
-        /* Featured Section */
         .featured-section {
             background-color: white;
             padding: 2rem;
@@ -171,7 +166,6 @@
             color: var(--text-color);
         }
 
-        /* Product Grid */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -252,7 +246,6 @@
             color: white;
         }
 
-        /* Cart and Wishlist Styles */
         .cart-container, .wishlist-container {
             background: white;
             border-radius: 8px;
@@ -283,7 +276,6 @@
             font-weight: bold;
         }
 
-        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -339,7 +331,6 @@
             font-size: 1rem;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .top-header {
                 flex-direction: column;
@@ -392,6 +383,7 @@
 								<a href="#" class="nav-link" onclick="loadPage('study')">Study</a>
 								<a href="#" class="nav-link" onclick="loadPage('clothing')">Clothing</a>
 								<a href="#" class="nav-link" onclick="loadPage('food')">Food</a>
+								<a href="#" class="nav-link" onclick="loadPage('personal')">Personal Care</a>
 							</nav>
 						</header>
 						<main id="main-content" class="main-content">
@@ -416,7 +408,6 @@
 									</div>
 								</div>
 								<script>
-        // Product Data
         const products = {
             furniture: {
                 title: "Furniture",
@@ -425,7 +416,7 @@
                         id: 'f1',
                         name: 'Desk',
                         price: 80.00,
-                        description: 'SStylish and functional desk, perfect for dorm studying.',
+                        description: 'Stylish and functional desk, perfect for dorm studying.',
                         image: 'desk.jpg'
                     },
                     {
@@ -582,14 +573,38 @@
                         image: 'bowls.jpg'
                     }
                 ]
-            }
+            },
+	    personal: {
+		    title: "Personal Care",
+		    items: [
+		        {
+		            id: 'p1',
+		            name: 'Shampoo, Condition, and Body Wash Set',
+		            price: 22.00,
+		            description: 'Three-piece shower essentials pack includes moisturizing shampoo, nourishing conditioner, and refreshing body wash.',
+		            image: 'shampoo.jpg'
+		        },
+		        {
+		            id: 'p2',
+		            name: 'Toothpaste',
+		            price: 4.00,
+		            description: 'Long-lasting cavity protection toothpaste with mint flavor.',
+		            image: 'toothpaste.jpg'
+		        },
+		        {
+		            id: 'p3',
+		            name: 'Lotion',
+		            price: 8.00,
+		            description: 'Moisturizing body lotion with 24-hour hydration. Non-greasy formula perfect for daily use.',
+		            image: 'lotion.jpg'
+		        }
+		    ]
+		}
         };
 
-        // Shopping cart and wishlist arrays
         let cart = [];
         let wishlist = [];
 
-        // Page loading function
         function loadPage(page) {
             const mainContent = document.getElementById('main-content');
             
@@ -609,7 +624,6 @@
                     }
             }
 
-            // Update active nav link
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('active');
                 if (link.textContent.toLowerCase().includes(page.toLowerCase())) {
@@ -618,7 +632,6 @@
             });
         }
 
-        // Search Functions
        function handleSearchButton() {
     const searchInput = document.querySelector('.search-input');
     const searchTerm = searchInput.value.trim();
@@ -640,7 +653,6 @@ function searchProducts(searchTerm) {
     const results = [];
     searchTerm = searchTerm.toLowerCase();
     
-    // Search through all categories and their products
     for (const category in products) {
         const matches = products[category].items.filter(product => 
             product.name.toLowerCase().includes(searchTerm) ||
@@ -670,7 +682,6 @@ function searchProducts(searchTerm) {
     `;
 }
 
-        // Page content generators
         function generateHomePage() {
             return `
                 
@@ -802,7 +813,6 @@ function searchProducts(searchTerm) {
 	    `;
 	}
 
-        // Cart Functions
         function addToCart(productId) {
             const product = findProduct(productId);
             if (!product) return;
@@ -835,10 +845,8 @@ function searchProducts(searchTerm) {
 
         function updateCartCount() {
             const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-            // Add cart count badge logic here if needed
         }
 
-        // Wishlist Functions
         function addToWishlist(productId) {
             const product = findProduct(productId);
             if (!product) return;
@@ -861,7 +869,6 @@ function searchProducts(searchTerm) {
             removeFromWishlist(productId);
         }
 
-        // Utility Functions
         function findProduct(productId) {
             for (const category in products) {
                 const product = products[category].items.find(item => item.id === productId);
@@ -875,10 +882,8 @@ function searchProducts(searchTerm) {
                 return;
             }
             alert('Proceeding to checkout...');
-            // Add checkout logic here
         }
 
-        // Modal Functions
         function openModal(modalId) {
             document.getElementById(`${modalId}-modal`).style.display = 'block';
         }
@@ -887,32 +892,30 @@ function searchProducts(searchTerm) {
             document.getElementById(`${modalId}-modal`).style.display = 'none';
         }
 
-        // Close modal when clicking outside
         window.onclick = function(event) {
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = 'none';
             }
         }
 
-        // Sign In Function
         function handleSignIn(event) {
             event.preventDefault();
             const email = event.target.querySelector('input[type="email"]').value;
             const password = event.target.querySelector('input[type="password"]').value;
             
-            // Add your authentication logic here
+           
             console.log('Sign in attempted with:', email);
             alert('Sign in successful!');
             closeModal('signin');
         }
 
-        // Add event listeners
+     
         document.querySelector('.search-input').addEventListener('keypress', handleSearch);
         document.querySelector('.search-button').addEventListener('click', handleSearchButton);
 
-        // Initialize the page
+      
         loadPage('home');
     
-												</script>
-											</body>
-										</html>
+		</script>
+	</body>
+</html>
